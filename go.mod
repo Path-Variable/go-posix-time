@@ -1,3 +1,3 @@
-module path-variable.com/go-posix-time
+module github.com/isaric/go-posix-time
 
 go 1.19
