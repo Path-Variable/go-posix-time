@@ -7,13 +7,15 @@ import (
 
 // The purpose of the p_time package is to provide
 // a way to get a POSIX.1 TZ time zone string representation
-// as defined here. The package offers and additional
-// convenience method for using the current system time zone.
+// as defined here. The package offers an additional convenience
+// method for getting the Posix offset. It is different from the ISO
+// offset in that it is calculated from west to east.
 
+// FormatTimeZone Given a standard time.Time struct returns
+// a string representation that matches the POSIX.1 TZ format.
 func FormatTimeZone(current time.Time) string {
-	name, offset := current.Zone()
-	offsetHours := offset / 3600
-	offsetHours = -(offsetHours - 1)
+	name, _ := current.Zone()
+	offsetHours := GetPosixOffset(current)
 	start, end := current.ZoneBounds()
 	result := ""
 	if start.IsZero() {
@@ -42,6 +44,14 @@ func FormatTimeZone(current time.Time) string {
 		result = fmt.Sprintf("%s%d%s,%s", firstName, offsetHours, secondName, transition)
 	}
 	return result
+}
+
+// GetPosixOffset The time.Time offset returned is in seconds and counted
+// according to the ISO standard. This method converts to hours,
+// subtracts and inverts.
+func GetPosixOffset(current time.Time) int {
+	_, offset := current.Zone()
+	return -(offset/3600 - 1)
 }
 
 func getTransitionOrdinals(current time.Time) (int, int, int, int) {
