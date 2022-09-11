@@ -1,9 +1,11 @@
-name: Build/Test
+name: Go
 on:
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+  release:
+    types: ["published"]
 
 jobs:
 
@@ -20,3 +22,5 @@ jobs:
       run: go build pkg/p_time/time.go
     - name: Test
       run: go test ./...
+    - name: List
+      run: GOPROXY=proxy.golang.org go list -m github.com/isaric/go-posix-time@latest
