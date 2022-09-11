@@ -1,6 +1,6 @@
 # go-posix-time
 
-![Github Actions CI](https://github.com/isaric/go-posix-time/actions/workflows/go.yml/badge.svg?branch=main)
+[![Go](https://github.com/isaric/go-posix-time/actions/workflows/go.yml/badge.svg?branch=main)](https://github.com/isaric/go-posix-time/actions/workflows/go.yml)
 
 
 This is a small library whose purpose is to format a Go time.Time struct into a POSIX.1 TZ string.
