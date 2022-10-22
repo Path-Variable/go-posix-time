@@ -12,7 +12,7 @@ const newyorkZone = "America/New_York"
 const errorTemplate = "Time zone string for test time %s is not correct. Expected %s but got %s"
 
 func TestFormatTimeZoneCET(t *testing.T) {
-	testFormatTimeZone(t, zagrebZone, expectedCET, 2022, 4, 12)
+	testFormatTimeZone(t, zagrebZone, expectedCET, 2022, 2, 12)
 }
 
 func TestFormatTimeZoneCETDSTFirst(t *testing.T) {
@@ -20,7 +20,7 @@ func TestFormatTimeZoneCETDSTFirst(t *testing.T) {
 }
 
 func TestFormatTimeZoneEST(t *testing.T) {
-	testFormatTimeZone(t, newyorkZone, expectedEST, 2022, 4, 12)
+	testFormatTimeZone(t, newyorkZone, expectedEST, 2022, 2, 12)
 }
 
 func TestFormatTimeZoneESTDSTFirst(t *testing.T) {
